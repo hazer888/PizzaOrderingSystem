@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 
-public class Controller {
+public class DeliveryInfoController {
 
     Model database = new Model();
 
