@@ -30,7 +30,7 @@
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                             <Image url="@Pictures/Cheese-Pizza.png" />
                         </ImageView>
-                        <Button mnemonicParsing="false" text="PIZZA">
+                        <Button fx:id="pizzaButton" mnemonicParsing="false" text="PIZZA" onAction="#pizzaPressed">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>

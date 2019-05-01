@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class MenuController {
     @FXML Button backButton;
+    @FXML Button pizzaButton;
 
     Parent root;
 
@@ -22,5 +23,17 @@ public class MenuController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
+    @FXML
+    public void pizzaPressed() throws IOException {
+        root = FXMLLoader.load(getClass().getResource("pizza.fxml"));
+        Stage stage = (Stage)pizzaButton.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+
+
+
 
 }
