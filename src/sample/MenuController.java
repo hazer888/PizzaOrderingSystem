@@ -7,10 +7,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
+
 import java.awt.*;
 import java.io.IOException;
 
-public class MenuController {
+public class MenuController extends WelcomeController {
     @FXML Button backButton;
     @FXML Button pizzaButton;
 

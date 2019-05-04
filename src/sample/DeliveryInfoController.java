@@ -4,29 +4,48 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 
-public class DeliveryInfoController {
+public class DeliveryInfoController extends MenuController {
 
     Model database = new Model();
 
-    @FXML private Label thankYouLabel;
-    @FXML private TextField first_name;
-    @FXML private TextField last_name;
-    @FXML private TextField phoneNumber;
 
-    private String fnameData;
-    private String lnameData;
-    private String phoneNumberData;
+    @FXML private TextField streetAddress;
+    @FXML private TextField suiteAptNum;
+    @FXML private TextField city;
+    @FXML private ComboBox state;
+    @FXML private TextField zipCode;
+
+    private String streetAddressData;
+    private String suiteAptNumData;
+    private String cityData;
+    private String stateData;
+    private String zipCodeData;
 
     public void submitButtonPress() {
-        fnameData = first_name.getText();
-        database.firstName = fnameData;
-        lnameData = last_name.getText();
-        database.lastName = lnameData;
-        phoneNumberData = phoneNumber.getText();
-        database.phoneNumber = phoneNumberData;
-        thankYouLabel.setText("Submitted");
+        streetAddressData = streetAddress.getText();
+        database.streetAddress = streetAddressData;
+
+        suiteAptNumData = suiteAptNum.getText();
+        database.suiteAptNum = suiteAptNumData;
+
+        cityData = city.getText();
+        database.city = cityData;
+
+        stateData = state.getValue().toString();
+        database.state = stateData;
+
+        zipCodeData = zipCode.getText();
+        database.zipCode = zipCodeData;
+
+
+       // thankYouLabel.setText("Submitted");
+
+        // insert person table below like above with address info and connect new button at checkout
+
         database.database();
     }
+
+
 
 
 

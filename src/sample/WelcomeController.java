@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class WelcomeController {
     @FXML Button deliveryButton;
-    @FXML Button carryoutButton;
+    @FXML Button goToMenuButton;
 
     Parent root;
 
@@ -24,9 +24,9 @@ public class WelcomeController {
     }
 
     @FXML
-    public void carryoutPressed() throws IOException {
+    public void goToMenu() throws IOException {
         root = FXMLLoader.load(getClass().getResource("menu.fxml"));
-        Stage stage = (Stage)carryoutButton.getScene().getWindow();
+        Stage stage = (Stage)goToMenuButton.getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

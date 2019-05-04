@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -10,17 +13,61 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.collections.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PizzaController">
+<?import java.lang.String?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #E25822 ;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PizzaController">
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="277.0" fitWidth="288.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@Pictures/pizza.png" />
-               <HBox.margin>
-                  <Insets left="25.0" top="100.0" />
-               </HBox.margin>
-            </ImageView>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="316.0" fitWidth="277.0" pickOnBounds="true" preserveRatio="true">
+                      <Image url="@Pictures/pizza.png" />
+                     <VBox.margin>
+                        <Insets bottom="25.0" left="15.0" top="50.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <HBox prefHeight="116.0" prefWidth="292.0" spacing="10.0">
+                     <children>
+                        <Label text="Quantity:" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ChoiceBox fx:id="quantityofpizza" value= "1" prefHeight="12.0" prefWidth="58.0">
+                             <items>
+                                 <FXCollections fx:factory="observableArrayList">
+                                     <String fx:value="1" />
+                                     <String fx:value="2" />
+                                     <String fx:value="3" />
+                                     <String fx:value="4" />
+                                     <String fx:value="5" />
+                                     <String fx:value="6" />
+                                     <String fx:value="7" />
+                                     <String fx:value="8" />
+                                     <String fx:value="9" />
+                                     <String fx:value="10" />
+                                 </FXCollections>
+                             </items>
+                         </ChoiceBox>
+
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="31.0" prefWidth="199.0" spacing="25.0">
+                     <children>
+                         <Button fx:id="goToMenuButton" mnemonicParsing="false" text="&lt;&lt; Back to Menu" onAction="#goToMenu" />
+                        <Button mnemonicParsing="false" text="Add to Cart" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
             <VBox prefHeight="522.0" prefWidth="453.0">
                <children>
                   <Label text="Pizza Size:" textFill="WHITE">
@@ -28,9 +75,9 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <HBox prefHeight="53.0" prefWidth="453.0" spacing="10.0">
+                  <HBox prefHeight="0.0" prefWidth="453.0" spacing="10.0">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets bottom="25.0" top="10.0" />
                      </VBox.margin>
                      <children>
                         <RadioButton mnemonicParsing="false" text="Small" textFill="WHITE">
@@ -47,7 +94,7 @@
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                      </font>
                   </Label>
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                  <HBox prefHeight="0.0" prefWidth="453.0" spacing="15.0">
                      <children>
                         <RadioButton mnemonicParsing="false" text="Tomato" textFill="WHITE">
                            <toggleGroup>
@@ -55,11 +102,106 @@
                            </toggleGroup></RadioButton>
                         <RadioButton mnemonicParsing="false" text="Alfredo" textFill="WHITE" toggleGroup="$sauce" />
                         <RadioButton mnemonicParsing="false" text="BBQ" textFill="WHITE" toggleGroup="$sauce" />
+                        <RadioButton mnemonicParsing="false" text="None" textFill="WHITE" toggleGroup="$sauce" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="25.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label text="Cheese:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="0.0" prefWidth="453.0" spacing="15.0">
+                     <children>
+                        <RadioButton mnemonicParsing="false" text="Light" textFill="WHITE">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="cheese" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton mnemonicParsing="false" text="Normal" textFill="WHITE" toggleGroup="$cheese">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" text="Extra" textFill="WHITE" toggleGroup="$cheese" />
+                        <RadioButton mnemonicParsing="false" text="None" textFill="WHITE" toggleGroup="$cheese" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="25.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label text="Meats:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <VBox prefHeight="10.0" prefWidth="453.0">
+                     <children>
+                        <HBox prefHeight="0.0" prefWidth="453.0" spacing="15.0">
+                           <children>
+                              <CheckBox mnemonicParsing="false" text="Ham" textFill="WHITE" />
+                              <CheckBox mnemonicParsing="false" text="Beef" textFill="WHITE" />
+                              <CheckBox mnemonicParsing="false" text="Salami" textFill="WHITE" />
+                              <CheckBox mnemonicParsing="false" text="Pepperoni" textFill="WHITE" />
+                              <CheckBox mnemonicParsing="false" text="Sausage" textFill="WHITE" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="453.0" spacing="10.0">
+                           <children>
+                              <CheckBox mnemonicParsing="false" text="Chicken" textFill="WHITE" />
+                              <CheckBox mnemonicParsing="false" text="Bacon" textFill="WHITE" />
+                              <CheckBox mnemonicParsing="false" text="Steak" textFill="WHITE" />
+                              <CheckBox mnemonicParsing="false" text="Anchovies" textFill="WHITE" />
+                              <CheckBox mnemonicParsing="false" text="Pepperoni" textFill="WHITE" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="25.0" top="10.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <Label text="Veggies:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <VBox prefHeight="88.0" prefWidth="453.0">
+                     <children>
+                        <HBox prefHeight="0.0" prefWidth="453.0" spacing="15.0">
+                           <children>
+                              <CheckBox mnemonicParsing="false" text="Banana Peppers" textFill="WHITE" />
+                              <CheckBox mnemonicParsing="false" text="Mushrooms" textFill="WHITE" />
+                              <CheckBox mnemonicParsing="false" text="Pineapple" textFill="WHITE" />
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="5.0" prefWidth="453.0" spacing="15.0">
+                           <children>
+                              <CheckBox mnemonicParsing="false" text="Jalapeno Peppers" textFill="WHITE" />
+                              <CheckBox mnemonicParsing="false" text="Black Olives" textFill="WHITE" />
+                              <CheckBox mnemonicParsing="false" text="Roma Tomatoes" textFill="WHITE" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="453.0" spacing="15.0">
+                           <children>
+                              <CheckBox mnemonicParsing="false" text="Green Peppers" textFill="WHITE" />
+                              <CheckBox mnemonicParsing="false" text="Onions" textFill="WHITE" />
+                           </children>
+                        </HBox>
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
-                  </HBox>
+                  </VBox>
                </children>
                <HBox.margin>
                   <Insets left="40.0" top="20.0" />
